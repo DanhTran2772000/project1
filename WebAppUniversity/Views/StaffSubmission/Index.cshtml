@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebAppUniversity.Data.Submission>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Staff Submission</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline_2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deadline_1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deadline_2)
+                </td>
+                <td>
+                    <a asp-action="ViewIdeas" asp-route-id="@item.ID">ViewIdeas</a>|
+                    <a asp-action="ExportExcel" asp-route-submissionId="@item.ID">Export Excell</a>|
+                    <a asp-action="ExportZip" asp-route-id="@item.ID">Export Zip</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

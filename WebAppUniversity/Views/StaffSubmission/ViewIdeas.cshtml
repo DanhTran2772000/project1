@@ -1,0 +1,80 @@
+﻿@using WebAppUniversity.Data;
+@model WebAppUniversity.Data.Submission
+
+@{
+    ViewData["Title"] = "ViewIdeas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ideas = (List<Ideas>)ViewData["ideas"];
+}
+
+
+<div>
+    <h4>List Of Ideas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deadline_1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deadline_1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deadline_2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deadline_2)
+        </dd>
+
+
+    </dl>
+    <div>
+        <a class="btn btn-success" asp-action="AddNew" asp-route-submissionId="@Model.ID">Add Idea</a>
+    </div>
+    </thead>
+    <table class="table">
+
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <th>Brief</th>
+                <th>Views</th>
+                <th>Like</th>
+                <th>Dislike</th>
+            </tr>
+            @foreach (var item in ideas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brief)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Views)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Like)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dislike)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.SumbmissionID">Details</a> |
+                        <a class="btn btn-primary" asp-action="ViewIdeas" asp-route-id="@item.SumbmissionID">Like</a> |
+                        <a class="btn btn-primary" asp-action="ViewIdeas" asp-route-id="@item.SumbmissionID">DisLike</a> 
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

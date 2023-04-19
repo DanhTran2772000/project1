@@ -1,0 +1,54 @@
+﻿@using WebAppUniversity.Data;
+@model WebAppUniversity.Data.Submission
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ideas = (List<Ideas>)ViewData["ideas"];
+}
+
+<div class="row">
+<div class="col-md-4">
+    <h4>Datails</h4>
+    <hr />
+    <dl>
+        <tbody>
+                @foreach (var item in ideas)
+                {
+                    <tr>
+                <dt>
+                            @Html.DisplayNameFor(modelItem => item.Title)
+                </dt>
+                <dd>
+                            @Html.DisplayFor(modelItem => item.Title)
+                </dd>
+                <dt>
+                            @Html.DisplayNameFor(modelItem => item.Brief)
+                </dt>
+                <dd>
+                            @Html.DisplayFor(modelItem => item.Brief)
+                </dd>
+                <dt>
+                            @Html.DisplayNameFor(modelItem => item.Views)
+                </dt>
+                <dd>
+                            @Html.DisplayFor(modelItem => item.Views)
+                </dd>
+                <dt>
+                            @Html.DisplayNameFor(modelItem => item.CategoryID)
+                </dt>
+                <dd>
+                            @Html.DisplayFor(modelItem => item.CategoryID)
+                </dd>
+                </tr>
+                }
+        </tbody>
+
+
+    </dl>
+</div>
+</div>
+<div>
+    <a asp-action="AddNew" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back</a>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebAppUniversity.Data.User>
+
+
+
+<h2>List of User</h2>
+
+
+<table class="table" style="text-align:center;">
+    <thead>
+        <tr>
+            <th style="text-align: center;">Id</th>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Email</th>
+            <th style="text-align: center;"></th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger mt-3">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

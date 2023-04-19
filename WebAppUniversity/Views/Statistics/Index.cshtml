@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebAppUniversity.Data.Department>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="page-section features" style="margin:110px 50px">
+        <h2>Statistics</h2>
+
+
+        <table class="table table-borderless">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</main>
